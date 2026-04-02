@@ -4,7 +4,7 @@
  * Theme setup.
  */
 
-namespace App;
+namespace SagePress;
 
 use Illuminate\Support\Facades\Vite;
 

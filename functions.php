@@ -1,6 +1,6 @@
 <?php
 
-use App\Providers\ThemeServiceProvider;
+use SagePress\Providers\ThemeServiceProvider;
 use Roots\Acorn\Application;
 
 /*

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Composers;
+namespace SagePress\View\Composers;
 
 use Roots\Acorn\View\Composer;
 

@@ -4,7 +4,7 @@
  * Theme filters.
  */
 
-namespace App;
+namespace SagePress;
 
 /**
  * Add "… Continued" to the excerpt.
