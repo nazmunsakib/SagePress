@@ -9,6 +9,16 @@ namespace SagePress;
 use Illuminate\Support\Facades\Vite;
 
 /**
+ * Enqueue theme assets.
+ *
+ * @return void
+ */
+add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_style('sagepress-app', Vite::asset('resources/css/app.css'), [], null);
+    wp_enqueue_script('sagepress-app', Vite::asset('resources/js/app.js'), ['jquery'], null, ['strategy' => 'defer']);
+}, 100);
+
+/**
  * Inject styles into the block editor.
  *
  * @return array
