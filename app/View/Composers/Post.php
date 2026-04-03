@@ -31,7 +31,7 @@ class Post extends Composer
                 return get_the_title($home);
             }
 
-            return __('Latest Posts', 'sagepress');
+            return __('Blog', 'sagepress');
         }
 
         if (is_archive()) {

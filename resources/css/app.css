@@ -1,4 +1,44 @@
-@import "tailwindcss" theme(static);
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --color-brand-primary: #1a56db;
+  --color-brand-secondary: #7e3af2;
+  --color-brand-dark: #111827;
+  --color-brand-light: #f9fafb;
+
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-brand-light text-brand-dark antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight text-gray-900;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-center text-sm font-medium transition-all duration-200 focus:ring-4;
+  }
+
+  .btn-primary {
+    @apply bg-brand-primary text-white hover:bg-blue-800 focus:ring-blue-300;
+  }
+}
+
 @source "../../app/**/*.php";
 @source "../**/*.blade.php";
 @source "../**/*.js";
