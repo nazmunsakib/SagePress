@@ -1,4 +1,6 @@
-<article @php(post_class('single-post-article pb-24'))>
+<article @php(post_class('single-post-article pb-24')) itemscope itemtype="https://schema.org/Article">
+  <meta itemprop="mainEntityOfPage" content="{{ get_permalink() }}">
+  
   <!-- Post Banner/Header Section -->
   <header class="relative bg-brand-dark py-24 sm:py-32 xl:py-40">
     <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-brand-light to-transparent"></div>

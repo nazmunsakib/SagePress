@@ -4,14 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @php(do_action('get_header'))
-    
-    {{-- Tailwind CSS v4 & JS Bundle via Vite --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
     @php(wp_head())
   </head>
 
-  <body @php(body_class('antialiased font-sans bg-brand-light text-brand-dark selection:bg-brand-primary/10 selection:text-brand-primary'))>
+  <body @php(body_class('antialiased font-sans bg-slate-50 text-slate-900'))>
     @php(wp_body_open())
 
     <div id="app" class="flex flex-col min-h-screen">
@@ -19,20 +16,16 @@
         {{ __('Skip to content', 'sagepress') }}
       </a>
 
-      @include('sections.header')
+      @include('partials.header')
 
       <main id="main" class="main flex-grow outline-none" tabindex="-1">
         @yield('content')
       </main>
 
-      @hasSection('sidebar')
-        <aside class="sidebar">
-          @yield('sidebar')
-        </aside>
-      @endif
-
-      @include('sections.footer')
+      @include('partials.footer')
     </div>
+
+    @include('components.offcanvas-nav')
 
     @php(do_action('get_footer'))
     @php(wp_footer())

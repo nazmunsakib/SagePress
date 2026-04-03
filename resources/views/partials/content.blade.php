@@ -35,7 +35,7 @@
     </div>
 
     <h2 class="text-2xl font-bold leading-snug tracking-tight text-gray-900 mb-4 decoration-brand-primary decoration-4 group-hover:underline underline-offset-8 transition-all">
-      <a href="{{ get_permalink() }}" class="after:absolute after:inset-0">
+      <a href="{{ get_permalink() }}">
         {!! get_the_title() !!}
       </a>
     </h2>

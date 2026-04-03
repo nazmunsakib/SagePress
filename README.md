@@ -1,42 +1,39 @@
-# 🚀 SagePress: The Ultimate WordPress Starter Theme
+# 🚀 SagePress: The Ultimate WordPress Boilerplate
 
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D22.12.0-brightgreen)](https://nodejs.org/)
 [![PHP Version](https://img.shields.io/badge/php-%3E%3D8.3-blue)](https://php.net/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Tool: Vite](https://img.shields.io/badge/build-Vite-646CFF)](https://vitejs.dev/)
-[![Styling: Tailwind CSS 4](https://img.shields.io/badge/CSS-Tailwind%204-38B2AC)](https://tailwindcss.com/)
+---
 
-**SagePress** is a modern, high-performance WordPress starter theme built for developers who demand a professional workflow. Taking the power of **Roots Sage**, it integrates the latest technologies including **Tailwind CSS 4**, **Vite**, and **Laravel Blade** to provide a component-based development experience inside WordPress.
+> [!IMPORTANT]
+> **DEVELOPER-ONLY TOOL:** This boilerplate is designed strictly for professional WordPress engineers familiar with Sage 10, Acorn, and modern build pipelines. It is not a plug-and-play theme for end-users.
+
+**SagePress Boilerplate** is a premium, **High-Performance WordPress Starter Theme** engineered for speed and search visibility. Built on **Roots Sage 10** and **Acorn 6**, it integrates **Tailwind CSS v4** and **Vite** for the fastest possible development and page load times. This boilerplate is pre-configured for **SEO & GEO-targeting**, featuring mobile-first principles and **Schema.org** JSON-LD structures out-of-the-box.
 
 ---
 
 ## ✨ Features
 
-- 🏗 **Laravel Blade Templating:** Clean, dry, and efficient theme files using Blade.
-- ⚡ **Vite-Powered Workflow:** Instant HMR (Hot Module Replacement) and ultra-fast builds.
-- 🎨 **Tailwind CSS v4:** Experience the future of CSS with built-in support for Tailwind's latest engine.
-- 🧱 **Component-Driven:** Easily build reusable UI components.
-- 🛠 **Acorn 6 Integration:** Bringing Laravel's robust features (Service Providers, Config, etc.) to WordPress.
-- 📱 **Mobile-First & SEO Ready:** Optimized for performance and search engine visibility out of the box.
+- 🏗 **Tailwind CSS v4:** Experience the future of CSS with a CSS-first configuration and ultra-fast performance.
+- ⚡ **Vite 6/8 Integration:** Instant HMR (Hot Module Replacement) using the `wordpressPlugin` for seamless WP development.
+- 🧱 **Blade Component Architecture:** Modular, reusable UI components including a professional Offcanvas Navigation.
+- 📱 **Mobile-First Offcanvas:** A high-end sliding mobile menu with glassmorphism and accessibility (ARIA/ESC) built-in.
+- 🎨 **Premium Aesthetics:** Curated typography (Outfit/Inter), smooth transitions, and modern grid layouts.
+- 🛠 **Acorn 6 Ready:** Full support for Laravel-style Service Providers, View Composers, and configurations.
 
 ---
 
 ## 📋 Prerequisites
 
-Ensure you have the following installed before getting started:
-
 - **PHP:** >= 8.3
 - **Node.js:** >= 22.12.0
 - **Composer:** >= 2.0
-- **WP-CLI:** Optional but recommended
 
 ---
 
 ## 🚀 Getting Started
 
 ### 1. Installation
-
-Clone the repository into your WordPress themes directory:
 
 ```bash
 git clone https://github.com/nazmunsakib/sagepress.git wp-content/themes/sagepress
@@ -45,22 +42,24 @@ cd wp-content/themes/sagepress
 
 ### 2. Install Dependencies
 
-Install PHP and JavaScript dependencies:
+Install PHP and JavaScript dependencies (using `--legacy-peer-deps` ensures compatibility with the latest Vite plugins):
 
 ```bash
 composer install
-npm install
+npm install --legacy-peer-deps
 ```
 
-### 3. Build Assets
+### 3. Development
 
-For local development with HMR:
+Launch the high-speed Vite dev server:
 
 ```bash
 npm run dev
 ```
 
-To build production-ready assets:
+### 4. Production
+
+Compile and minify assets for deployment:
 
 ```bash
 npm run build
@@ -72,38 +71,35 @@ npm run build
 
 ```text
 sagepress/
-├── app/               # Theme logic (Controllers, Providers, Filters)
-├── public/            # Compiled assets (Vite output)
+├── app/               # Theme logic (Controllers, Filters, setup.php)
 ├── resources/         # Frontend sources
-│   ├── css/           # Tailwind CSS files
-│   ├── js/            # JavaScript files
+│   ├── css/app.css    # Tailwind v4 Entry (Theme tokens & Plugins)
+│   ├── js/app.js      # Main logic (Offcanvas Nav, HMR)
 │   └── views/         # Blade templates
-├── vite.config.js     # Vite configuration
-└── tailwind.config.js # Tailwind CSS configuration
+│       ├── components/# Reusable modules (Offcanvas-nav)
+│       ├── layouts/   # HTML wrapper & Vite asset loading
+│       └── partials/  # Header, Footer, Sidebar
+└── vite.config.js     # Optimized config using wordpressPlugin()
 ```
 
 ---
 
-## 📖 Key Commands
+## ⚠️ Troubleshooting & Setup Tips
 
-| Command | Description |
-| :--- | :--- |
-| `npm run dev` | Starts the Vite development server. |
-| `npm run build` | Compiles assets for production. |
-| `npm run translate` | Generates POT and updates localization files. |
-| `composer update` | Updates PHP packages. |
+### 1. PowerShell Execution Policy (Windows)
+If `npm` commands fail with a security error, run this in PowerShell as Administrator:
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
 
----
+### 2. Tailwind v4 Typography
+The boilerplate uses the official typography plugin for single posts. Ensure it is installed:
+```bash
+npm install @tailwindcss/typography --legacy-peer-deps
+```
 
-## 🤝 Contributing
-
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+### 3. Vite Config Exports
+If you see an "export not found" error for `roots`, check `vite.config.js`. We use the named export **`wordpressPlugin`** from `@roots/vite-plugin`.
 
 ---
 
@@ -120,6 +116,4 @@ Contributions are what make the open-source community such an amazing place to l
 
 Distributed under the MIT License. See `LICENSE.md` for more information.
 
----
-
-<p align="center">Made with ❤️ for the WordPress community</p>
+<p align="center">Handcrafted with ❤️ by Nazmun Sakib</p>
