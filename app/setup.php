@@ -84,7 +84,8 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
      */
     register_nav_menus([
-        'primary_navigation' => __('Primary Navigation', 'sage'),
+        'primary' => __('Primary Navigation', 'sagepress'),
+        'footer' => __('Footer Navigation', 'sagepress'),
     ]);
 
     /**
@@ -131,6 +132,13 @@ add_action('after_setup_theme', function () {
     ]);
 
     /**
+     * Enable wide alignment support.
+     *
+     * @link https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#wide-alignment
+     */
+    add_theme_support('align-wide');
+
+    /**
      * Enable selective refresh for widgets in customizer.
      *
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#customize-selective-refresh-widgets
@@ -152,12 +160,11 @@ add_action('widgets_init', function () {
     ];
 
     register_sidebar([
-        'name' => __('Primary', 'sage'),
+        'name' => __('Primary Sidebar', 'sagepress'),
         'id' => 'sidebar-primary',
-    ] + $config);
-
-    register_sidebar([
-        'name' => __('Footer', 'sage'),
-        'id' => 'sidebar-footer',
-    ] + $config);
+        'before_widget' => '<section class="widget %2$s">',
+        'after_widget' => '</section>',
+        'before_title' => '<h3 class="widget-title text-sm font-semibold uppercase tracking-wider text-gray-500 mb-4">',
+        'after_title' => '</h3>',
+    ]);
 });

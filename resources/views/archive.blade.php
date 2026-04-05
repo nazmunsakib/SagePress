@@ -1,19 +1,33 @@
 {{--
-  Blog Index Template
-  Main blog listing page
+  Archive Template
+  Category, tag, date, and author archives
 --}}
 @extends('layouts.app')
 
 @section('content')
   <div class="max-w-6xl mx-auto px-4 py-12">
     <header class="mb-10">
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-900">
-        @if (is_home())
-          {{ __('Latest Posts', 'sagepress') }}
-        @else
-          {!! get_the_archive_title() !!}
-        @endif
+      @php
+        $archive_type = '';
+        if (is_category()) $archive_type = __('Category', 'sagepress');
+        elseif (is_tag()) $archive_type = __('Tag', 'sagepress');
+        elseif (is_author()) $archive_type = __('Author', 'sagepress');
+        elseif (is_date()) $archive_type = __('Date', 'sagepress');
+      @endphp
+      
+      @if ($archive_type)
+        <span class="text-xs uppercase tracking-wider text-blue-600 font-semibold">{{ $archive_type }}</span>
+      @endif
+      
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">
+        {!! get_the_archive_title() !!}
       </h1>
+      
+      @if (get_the_archive_description())
+        <div class="text-gray-500 leading-relaxed">
+          {!! get_the_archive_description() !!}
+        </div>
+      @endif
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -40,10 +54,6 @@
                     <span>{{ get_the_author() }}</span>
                     <span>&bull;</span>
                     <time datetime="{{ get_the_date('c') }}">{{ get_the_date() }}</time>
-                    @if (get_the_category())
-                      <span>&bull;</span>
-                      <span>{{ get_the_category()[0]->name }}</span>
-                    @endif
                   </div>
 
                   <p class="text-gray-600 text-sm leading-relaxed mb-4">
@@ -60,7 +70,12 @@
 
           @include('partials.navigation')
         @else
-          <p class="text-gray-600">{{ __('No posts found.', 'sagepress') }}</p>
+          <div class="text-center py-12">
+            <p class="text-gray-600 mb-4">{{ __('No posts found in this archive.', 'sagepress') }}</p>
+            <a href="{{ home_url('/') }}" class="text-blue-600 hover:text-blue-700 font-medium">
+              {{ __('Return to homepage', 'sagepress') }} &rarr;
+            </a>
+          </div>
         @endif
       </div>
 
