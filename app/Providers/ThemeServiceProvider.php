@@ -1,6 +1,6 @@
 <?php
 
-namespace SagePress\Providers;
+namespace App\Providers;
 
 use Roots\Acorn\Sage\SageServiceProvider;
 

@@ -2,25 +2,26 @@
   "name": "nazmunsakib/sagepress",
   "type": "wordpress-theme",
   "license": "MIT",
-  "description": "WordPress starter theme with a modern development workflow",
-  "homepage": "https://nazmunsakib.com/",
+  "description": "SagePress is a WordPress starter theme built on Sage with a modern development workflow",
+  "homepage": "https://github.com/nazmunsakib/SagePress",
   "authors": [
     {
       "name": "Nazmun Sakib",
       "email": "nazmunsakib81@gmail.com",
-      "homepage": "https://nazmunsakib.com/"
+      "homepage": "https://github.com/nazmunsakib"
     }
   ],
   "keywords": [
-    "wordpress"
+    "wordpress",
+    "sage",
+    "starter-theme"
   ],
   "support": {
-    "issues": "https://github.com/nazmunsakib/sagepress/issues",
-    "forum": "https://nazmunsakib.com/"
+    "issues": "https://github.com/nazmunsakib/SagePress/issues"
   },
   "autoload": {
     "psr-4": {
-      "SagePress\\": "app/"
+      "App\\": "app/"
     }
   },
   "require": {

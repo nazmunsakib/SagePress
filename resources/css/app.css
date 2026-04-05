@@ -1,32 +1,4 @@
-@import "tailwindcss";
-@plugin "@tailwindcss/typography";
-
-@theme {
-  --font-sans: "Outfit", "Inter", sans-serif;
-  --color-brand-primary: #1d4ed8;
-  --color-brand-secondary: #7c3aed;
-  --color-brand-dark: #0f172a;
-}
-
-@layer base {
-  html {
-    -webkit-tap-highlight-color: transparent;
-    scroll-behavior: smooth;
-  }
-  body {
-    @apply bg-slate-50 text-slate-900 antialiased;
-  }
-}
-
-@layer components {
-  .btn {
-    @apply inline-flex items-center justify-center rounded-xl px-6 py-2.5 text-sm font-bold transition-all duration-200 border-2 border-transparent;
-  }
-  .btn-primary {
-    @apply bg-brand-primary text-white hover:bg-brand-primary/90 shadow-lg shadow-blue-500/20 active:scale-95;
-  }
-}
-
+@import "tailwindcss" theme(static);
 @source "../../app/**/*.php";
 @source "../**/*.blade.php";
 @source "../**/*.js";
