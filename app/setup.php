@@ -48,6 +48,17 @@ add_action('admin_head', function () {
 });
 
 /**
+ * Register the theme assets.
+ *
+ * @return void
+ */
+add_action('wp_head', function () {
+    echo Vite::useHotFile(public_path('build/hot'))
+        ->withEntryPoints(['resources/css/app.css', 'resources/js/app.js'])
+        ->toHtml();
+}, 0);
+
+/**
  * Use the generated theme.json file.
  *
  * @return string
