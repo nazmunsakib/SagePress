@@ -168,3 +168,11 @@ add_action('widgets_init', function () {
         'after_title' => '</h3>',
     ]);
 });
+
+/**
+ * Disable the Dashboard Activity widget to prevent crashes caused by orphaned 
+ * plugin data (like WooCommerce products) in the database.
+ */
+add_action('wp_dashboard_setup', function () {
+    remove_meta_box('dashboard_activity', 'dashboard', 'normal');
+});
