@@ -9,54 +9,26 @@ namespace App;
 use Illuminate\Support\Facades\Vite;
 
 /**
- * Inject styles into the block editor.
- *
- * @return array
- */
-add_filter('block_editor_settings_all', function ($settings) {
-    $style = Vite::asset('resources/css/editor.css');
-
-    $settings['styles'][] = [
-        'css' => "@import url('{$style}')",
-    ];
-
-    return $settings;
-});
-
-/**
- * Inject scripts into the block editor.
+ * Enqueue editor assets.
  *
  * @return void
  */
-add_action('admin_head', function () {
-    if (! get_current_screen()?->is_block_editor()) {
-        return;
-    }
-
-    if (! Vite::isRunningHot()) {
-        $dependencies = json_decode(Vite::content('editor.deps.json'));
-
-        foreach ($dependencies as $dependency) {
-            if (! wp_script_is($dependency)) {
-                wp_enqueue_script($dependency);
-            }
-        }
-    }
-    echo Vite::withEntryPoints([
-        'resources/js/editor.js',
-    ])->toHtml();
-});
+add_action('enqueue_block_editor_assets', function () {
+    echo Vite::useHotFile(public_path('build/hot'))
+        ->withEntryPoints(['resources/js/editor.js', 'resources/css/editor.css'])
+        ->toHtml();
+}, 100);
 
 /**
  * Register the theme assets.
  *
  * @return void
  */
-add_action('wp_head', function () {
+add_action('wp_enqueue_scripts', function () {
     echo Vite::useHotFile(public_path('build/hot'))
         ->withEntryPoints(['resources/css/app.css', 'resources/js/app.js'])
         ->toHtml();
-}, 0);
+}, 100);
 
 /**
  * Use the generated theme.json file.
